@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { Sidebar } from "@/components/layout/Sidebar";
+import { ProductsPage } from "@/pages/ProductsPage";
+import { AlertsPage } from "@/pages/AlertsPage";
+import { SettingsPage } from "@/pages/SettingsPage";
+import { MachinesPage } from "@/pages/MachinesPage";
 import { Dashboard as DashboardView } from "@/components/dashboard/Dashboard";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { Navigate } from "react-router-dom";
@@ -17,17 +21,22 @@ const Dashboard: React.FC = () => {
   }
 
   const renderContent = () => {
-    switch (activeView) {
-      case "dashboard":
-        return <DashboardView />;
-      case "machines":
-        return <div className="p-6">Machines view (coming soon)</div>;
-      case "products":
-        return <div className="p-6">Products view (coming soon)</div>;
-      default:
-        return <DashboardView />;
-    }
-  };
+  switch (activeView) {
+    case "dashboard":
+      return <DashboardView />;
+    case "machines":
+      return <MachinesPage />;
+    case "products":
+      return <ProductsPage />;
+    case "alerts":
+      return <AlertsPage />;
+    case "settings":
+      return <SettingsPage />;
+    default:
+      return <DashboardView />;
+  }
+};
+
 
   return (
     <div className="flex min-h-screen bg-background">
